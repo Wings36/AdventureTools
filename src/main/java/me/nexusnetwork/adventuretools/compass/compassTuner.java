@@ -1,5 +1,6 @@
 package me.nexusnetwork.adventuretools.compass;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,16 +20,26 @@ public class compassTuner implements CommandExecutor {
             if (args.length == 5) {
                 //Set command
                 if (args[0].toLowerCase().equals("set")) {
-                    Player target = plugin.getServer().getPlayer(args[1]);
-                    Location destination = new Location(target.getWorld(), Double.parseDouble(args[2]), Double.parseDouble(args[3]), Double.parseDouble(args[4]));
-                    target.setCompassTarget(destination);
+                    try {
+                        Player target = plugin.getServer().getPlayer(args[1]);
+                        Location destination = new Location(target.getWorld(), Double.parseDouble(args[2]), Double.parseDouble(args[3]), Double.parseDouble(args[4]));
+                        target.setCompassTarget(destination);
+                    } catch (NullPointerException e) {
+                        return false;
+                    }
+
                 }
                 //Look up
                 if (args[0].toLowerCase().equals("lookup")) {
-                    Player target = plugin.getServer().getPlayer(args[1]);
-                    Location point = target.getLocation();
-                    sender.sendMessage(target.getName() + " is currently on world " + point.getWorld().getName() +
-                            "\nat coords X: " + point.getX() + " Y: " + point.getY() + " Z: " + point.getZ());
+                    try {
+                        Player target = plugin.getServer().getPlayer(args[1]);
+                        Location point = target.getLocation();
+                        sender.sendMessage(target.getName() + " is currently on world " + point.getWorld().getName() +
+                                "\nat coords X: " + point.getX() + " Y: " + point.getY() + " Z: " + point.getZ());
+                    } catch (NullPointerException e) {
+                        return false;
+                    }
+
                 }
             }
             else

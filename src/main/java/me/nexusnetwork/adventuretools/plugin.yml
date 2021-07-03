@@ -15,4 +15,4 @@ commands:
   keepinv:
     description: Toggles KeepInventory per player
     usage: /keepinv
-    permission: adventuretools.ki
+    permission:

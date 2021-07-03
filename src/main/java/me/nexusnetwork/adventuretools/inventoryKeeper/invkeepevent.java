@@ -5,7 +5,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
-
 import java.util.ArrayList;
 
 public class invkeepevent implements Listener {
@@ -30,7 +29,7 @@ public class invkeepevent implements Listener {
 
     //True if enabled
     //False if disabled
-    private boolean playerCheck(Player player) { return playerList.contains(player); }
+    public boolean playerCheck(Player player) { return playerList.contains(player); }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {

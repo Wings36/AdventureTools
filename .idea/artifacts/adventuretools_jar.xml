@@ -4,6 +4,7 @@
     <root id="archive" name="adventuretools.jar">
       <element id="module-output" name="adventuretools" />
       <element id="file-copy" path="$PROJECT_DIR$/src/main/java/me/nexusnetwork/adventuretools/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/java/me/nexusnetwork/adventuretools/config.yml" />
     </root>
   </artifact>
 </component>

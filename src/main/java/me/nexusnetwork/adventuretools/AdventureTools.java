@@ -13,6 +13,8 @@ public class AdventureTools extends JavaPlugin {
 
     @Override
     public void onEnable(){
+        this.saveDefaultConfig();
+
         //Objects
         lightningRod ltRod = new lightningRod(this);
         invkeepevent invKeep = new invkeepevent(this);

@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 
@@ -18,10 +19,14 @@ public class invkeepevent implements Listener {
 
     public String togglePlayerStatus(Player player) {
         if(playerList.remove(player)) {
+            plugin.getConfig().set("keepinv.player." + player.getName() + ".status", false);
+            plugin.saveConfig();
             return "Keep Inventory is now off";
         }
         else {
             playerList.add(player);
+            plugin.getConfig().set("keepinv.player." + player.getName() + ".status", true);
+            plugin.saveConfig();
             return "Keep Inventory is now on";
         }
     }
@@ -30,6 +35,13 @@ public class invkeepevent implements Listener {
     //True if enabled
     //False if disabled
     public boolean playerCheck(Player player) { return playerList.contains(player); }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (plugin.getConfig().getBoolean("keepinv.player." + event.getPlayer().getName() + ".status", false)) {
+            playerList.add(event.getPlayer());
+        }
+    }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {

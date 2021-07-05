@@ -19,7 +19,7 @@ public class ltRodItem implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command lightning, String label, String[] args) {
         if (sender.isOp()) {
-            if (args.length < 0) {
+            if (args.length <= 0) {
                 sender.getServer().getPlayer(sender.getName()).getInventory().addItem(ltRod.getLtRod());
                 sender.sendMessage("Gave you one lightning rod!");
             }

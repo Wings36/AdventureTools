@@ -53,6 +53,7 @@ public class invkeepevent implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (plugin.getConfig().getBoolean("keepinv.player." + event.getPlayer().getName() + ".status", false)) {
             playerList.add(event.getPlayer());
+            event.getPlayer().sendMessage("ALERT: Keepinventory for this player is on.");
         }
     }
 
@@ -62,6 +63,7 @@ public class invkeepevent implements Listener {
         if (playerCheck(player)) {
             event.setKeepInventory(true);
             event.setKeepLevel(true);
+            event.getDrops().clear();
         }
         int counter = 0;
         if (plugin.getConfig().isInt("keepinv.player." + player.getName() + ".KIDeaths")) {

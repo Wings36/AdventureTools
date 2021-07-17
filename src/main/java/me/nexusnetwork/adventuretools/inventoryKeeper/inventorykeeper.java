@@ -26,6 +26,7 @@ public class inventorykeeper implements @Nullable CommandExecutor {
             else {
                 if (plugin.getServer().getPlayer(args[0]) != null) {
                     sender.sendMessage(invkeep.togglePlayerStatus(plugin.getServer().getPlayer(args[0])) + " for player " + plugin.getServer().getPlayer(args[0]).getName());
+                    return true;
                 }
             }
         }

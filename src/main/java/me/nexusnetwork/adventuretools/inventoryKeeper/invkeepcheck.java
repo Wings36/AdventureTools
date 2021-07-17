@@ -33,7 +33,9 @@ public class invkeepcheck implements @Nullable CommandExecutor {
             }
         }
         else {
-            sender.sendMessage("Error you do not have permission!");
+            Player player = sender.getServer().getPlayer(sender.getName());
+            sender.sendMessage("Keep Inventory Status for Player: " + player.getName());
+            sender.sendMessage(Boolean.toString(invKeepList.playerCheck(player)));
             return true;
         }
         return false;

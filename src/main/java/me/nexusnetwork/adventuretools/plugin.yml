@@ -20,3 +20,7 @@ commands:
     description: Checks KeepInventory Status
     usage: /keepinvcheck {name}
     permission: adventuretools.kic
+  yeetstick:
+    description: Yeet stick
+    usage: Yeet stick
+    permission: adventuretools.yeet
